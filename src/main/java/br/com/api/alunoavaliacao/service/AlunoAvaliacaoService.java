@@ -31,4 +31,7 @@ public class AlunoAvaliacaoService {
 		return alunoAvaliacaoRepository.getAlunoAvaliacaoProfessorNative(idTurma, anoletivo, bimestre, idProfessor, disciplina);
 	}
 	
+	public AlunoAvaliacao salvar(AlunoAvaliacao av) {
+		return alunoAvaliacaoRepository.save(av);
+	}
 }

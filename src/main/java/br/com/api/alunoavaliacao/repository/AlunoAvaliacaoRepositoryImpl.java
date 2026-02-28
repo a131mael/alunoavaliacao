@@ -1,17 +1,18 @@
 package br.com.api.alunoavaliacao.repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.escola.model.AlunoAvaliacao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class AlunoAvaliacaoRepositoryImpl implements AlunoAvaliacaoRepositoryCustom {
 
-	@Autowired
-	@Lazy
-	AlunoAvaliacaoRepository alunoAvaliacaoRepository;
+//	@Autowired
+//	@Lazy
+//	AlunoAvaliacaoRepository alunoAvaliacaoRepository;
 
 //	@Override
 //	public List<AlunoAvaliacao> getAlunoAvaliacao(Long idTurma) {

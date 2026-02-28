@@ -3,6 +3,7 @@ package br.com.api.alunoavaliacao.repository;
 import java.util.List;
 
 import org.escola.model.AlunoAvaliacao;
+import org.springframework.stereotype.Repository;
 
 public interface AlunoAvaliacaoRepositoryCustom {
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.NoResultException;
 
+import org.escola.enums.Serie;
 import org.escola.model.AlunoTurma;
 import org.escola.model.Avaliacao;
 import org.escola.model.Configuracao;
@@ -54,8 +55,8 @@ public class AlunoService {
 		return configuracaoRepository.findAll().get(0);
 	}
 	
-	public List<Avaliacao> getAvaliacoes(Long idProfessor,int anoletivo,int bimestre,int disciplina){
-		return avaliacaoRepository.getAvaliacaoNative(idProfessor, anoletivo, bimestre, disciplina);
+	public List<Avaliacao> getAvaliacoes(Long idProfessor,int anoletivo,int bimestre,int disciplina, Serie serie){
+		return avaliacaoRepository.getAvaliacaoNative(idProfessor, anoletivo, bimestre, disciplina,serie.ordinal());
 	}
 	
 	public List<ProfessorTurma> getProfessoresTurma(Long idTurma){

@@ -5,7 +5,9 @@ import java.util.List;
 import org.escola.model.AlunoAvaliacao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface AlunoAvaliacaoRepository extends JpaRepository<AlunoAvaliacao, Long> , AlunoAvaliacaoRepositoryCustom{
 
 	@Query(value = "select * from alunoavaliacao  av"
@@ -18,6 +20,7 @@ public interface AlunoAvaliacaoRepository extends JpaRepository<AlunoAvaliacao, 
 			+ "	and avaliacao.anoletivo = ?2"
 			+ "	and avaliacao.bimestre = ?3"
 			+ "	and avaliacao.disciplina = ?4"
+			+ "	and avaliacao.serie = turma.serie"
 			+ " order by aluno.nomealuno", nativeQuery = true)
 	public List<AlunoAvaliacao> getAlunoAvaliacaoNative(Long idTurma, Integer anoletivo, Integer bimestre, int disciplina);
 	
@@ -33,6 +36,7 @@ public interface AlunoAvaliacaoRepository extends JpaRepository<AlunoAvaliacao, 
 			+ "	and avaliacao.bimestre = ?3"
 			+ "	and aluno.id = ?4"
 			+ "	and avaliacao.disciplina = ?5"
+			+ "	and avaliacao.serie = turma.serie"
 			+ " order by aluno.nomealuno", nativeQuery = true)
 	public List<AlunoAvaliacao> getAlunoAvaliacaoNative(Long idTurma, Integer anoletivo, Integer bimestre, Long idAluno, int disciplina);
 	
@@ -48,6 +52,7 @@ public interface AlunoAvaliacaoRepository extends JpaRepository<AlunoAvaliacao, 
 			+ "	and aluno.id = ?4"
 			+ "	and professor.id = ?5"
 			+ "	and avaliacao.disciplina = ?6"
+			+ "	and avaliacao.serie = turma.serie"			
 			+ " order by aluno.nomealuno", nativeQuery = true)
 	public List<AlunoAvaliacao> getAlunoAvaliacaoNative(Long idTurma, Integer anoletivo, Integer bimestre, Long idAluno, Long idProfessor, int disciplina);
 
@@ -62,6 +67,7 @@ public interface AlunoAvaliacaoRepository extends JpaRepository<AlunoAvaliacao, 
 			+ "	and avaliacao.bimestre = ?3"
 			+ "	and professor.id = ?4"
 			+ "	and avaliacao.disciplina = ?5"
+			+ "	and avaliacao.serie = turma.serie"
 			+ " order by aluno.nomealuno", nativeQuery = true)
 	public List<AlunoAvaliacao> getAlunoAvaliacaoProfessorNative(Long idTurma, Integer anoletivo, Integer bimestre,	Long idProfessor, int disciplina);
 	

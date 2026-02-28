@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.escola.model.AlunoAvaliacao;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,12 +26,14 @@ public class AlunoAvaliacaoController {
 	AlunoAvaliacaoService alunoAvaliacaoService;
 
 	@GetMapping("/alunosavaliacoes")
-	public ResponseEntity<RetornoAlunosAvaliacaoDTO> getalunosAvaliacaoes(@RequestParam(required = true) Long idTurma,
+	public ResponseEntity<RetornoAlunosAvaliacaoDTO> getalunosAvaliacaoes(
+			@RequestParam(required = true) Long idTurma,
 			@RequestParam(required = true) Integer anoletivo, 
 			@RequestParam(required = true) Integer bimestre,
 			@RequestParam(required = false) Long idAluno, 
 			@RequestParam(required = false) Long idProfessor,
 			@RequestParam(required = true) int disciplina) {
+		
 		try {
 
 			List<AlunoAvaliacao> alunosAvaliacoes = null;
@@ -64,6 +65,10 @@ public class AlunoAvaliacaoController {
 
 				aluno.setId(av.getAluno().getId());
 				aluno.setNomeAluno(av.getAluno().getNomeAluno());
+				aluno.setFaltas1Bimestre(av.getAluno().getFaltas1Bimestre());
+				aluno.setFaltas2Bimestre(av.getAluno().getFaltas2Bimestre());
+				aluno.setFaltas3Bimestre(av.getAluno().getFaltas3Bimestre());
+				aluno.setFaltas4Bimestre(av.getAluno().getFaltas4Bimestre());
 				
 				avaliacao.setId(av.getAvaliacao().getId());
 				avaliacao.setNome(av.getAvaliacao().getNome());
